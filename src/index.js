@@ -3,12 +3,25 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap';
+
+import PeopleContext from './store/PeopleStore';
+import PlanetsContext from './store/PlanetsStore';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <PlanetsContext>
+  <PeopleContext>
+    <BrowserRouter>
+      {/* <React.StrictMode> */}
+        <App />
+      {/* </React.StrictMode> */}
+    </BrowserRouter>
+  </PeopleContext>
+  </PlanetsContext>
 );
 
 // If you want to start measuring performance in your app, pass a function

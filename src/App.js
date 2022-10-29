@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+import React from 'react';
+import {Routes, Route} from 'react-router-dom';
 import './App.css';
+import Home from './componentes/Home';
+import Detalle from './componentes/Detalle';
+import DetallePlanets from './componentes/DetallePlanets';
+
+import inyectContext from './store/AppContext';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/detalle/:id" element={<Detalle/>} />
+        <Route path="/detalleplanets/:id" element={<DetallePlanets/>} />
+      </Routes>
     </div>
   );
 }
 
-export default App;
+export default inyectContext(App);
