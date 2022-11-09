@@ -1,18 +1,21 @@
 import { createContext, useState, useEffect } from "react";
-import getStore from "./Flux";
+import getState from "./Flux";
 
 export const Context = createContext(null);
 
 const inyectContext = (Component) =>{
     const AppContext = props =>{
-        const [state, setState] = useState(getStore({
-            getStore:()=> state.store,
-            getActions:()=> state.actions,
-            setStore: updateStore=> setState({
-                store: Object.assing(state.store, updateStore),
-                actions:{...state.actions}
+        const [state, setState] = useState(
+            getState({
+                getStore:()=> state.store,
+                getActions:()=> state.actions,
+                setStore: updateStore=> 
+                    setState({
+                        store: Object.assign(state.store, updateStore),
+                        actions:{...state.actions}
+                    })
             })
-        }));
+        );
 
         useEffect(()=>{
             //state.action
@@ -20,7 +23,7 @@ const inyectContext = (Component) =>{
 
         return(
             <Context.Provider value={state}>
-                <Component/>
+                <Component {...props}/>
             </Context.Provider>
         );
     }

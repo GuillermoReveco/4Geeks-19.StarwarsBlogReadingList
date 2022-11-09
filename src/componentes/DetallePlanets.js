@@ -12,17 +12,28 @@ const DetallePlanets = () => {
         <Layout>
             <div>
                 {
-                    arrPlanets.map((item, index) => {
+                    arrPlanets.results.map((item, index) => {
                         console.log('DetallePlanets - item', item);
                         console.log('DetallePlanets - index', index);
                         let ind = index + 1;
                         if (ind == param.id) {
+
+                            let arr = item.url.split('/');
+                            let ind = arr[arr.length - 2];
+                            let imgPlanets = 'https://starwars-visualguide.com/assets/img/planets/@.jpg';
+                            let img = imgPlanets.replace('@', `${ind}`);
+
+                            if(ind == 1){
+                                img = 'https://starwars-visualguide.com/assets/img/big-placeholder.jpg'
+                            }
+
+
                             return (
                             <>
-                            <div className="card mb-3" key={item.id}>
+                            <div className="card mb-3" key={ind}>
                                 <div className="row g-0">
                                     <div className="col-md-4">
-                                        <img src={item.img} className="img-fluid rounded-start" alt="..." />
+                                        <img src={img} className="img-fluid rounded-start" alt="..." />
                                     </div>
                                     <div className="col-md-8">
                                         <div className="card-body">

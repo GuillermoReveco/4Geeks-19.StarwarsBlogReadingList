@@ -12,17 +12,23 @@ const Detalle = () => {
         <Layout>
             <div>
                 {
-                    arrPeople.map((item, index) => {
+                    arrPeople.results.map((item, index) => {
                         console.log('Detalle - item', item);
                         console.log('Detalle - index', index);
                         let ind = index + 1;
                         if (ind == param.id) {
+
+                            let arr = item.url.split('/');
+                            let ind = arr[arr.length - 2];
+                            let imgPeople = 'https://starwars-visualguide.com/assets/img/characters/@.jpg';
+                            let img = imgPeople.replace('@', `${ind}`);
+
                             return (
                             <>
-                            <div className="card mb-3" key={item.id}>
+                            <div className="card mb-3" key={ind}>
                                 <div className="row g-0">
                                     <div className="col-md-4">
-                                        <img src={item.img} className="img-fluid rounded-start" alt="..." />
+                                        <img src={img} className="img-fluid rounded-start" alt="..." />
                                     </div>
                                     <div className="col-md-8">
                                         <div className="card-body">
@@ -49,7 +55,7 @@ const Detalle = () => {
                                         <div className="col">{item.birth_year}</div>
                                         <div className="col">{item.gender}</div>
                                         <div className="col">{item.height}</div>
-                                        <div className="col">{item.skyn_color}</div>
+                                        <div className="col">{item.skin_color}</div>
                                         <div className="col">{item.eye_color}</div>
                                     </div>
                                 </div>

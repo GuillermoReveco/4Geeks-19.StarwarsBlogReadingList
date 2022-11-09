@@ -62,4 +62,11 @@ code {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
+.botonfav{
+  /* background-color: white;
+  color: yellow;
+  filter: opacity(50%); */
+  color: var(--bs-warning);
+  /* color: var(--bs-dark); */
+  filter:invert(1);
+}
