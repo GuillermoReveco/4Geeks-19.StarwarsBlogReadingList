@@ -268,10 +268,19 @@ const Home = () => {
 
                 <div className='container mt-3'>
                     <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item" disabled={arrPeople.previous? false : true} ><a class="page-link" href="#" onClick={()=>getPrevPeople()}>Previous</a></li>
-                            <li class="page-item" disabled={arrPeople.next? false : true} ><a class="page-link" href="#" onClick={()=>getNextPeople()}>Next</a></li>
-                        </ul>
+                        {
+                            arrPeople?
+                            (
+                            <ul className="pagination">
+                                <li className={arrPeople.previous? 'page-item' : 'page-item disabled'} ><a className="page-link" href="#" onClick={()=>getPrevPeople()}>Previous</a></li>
+                                <li className={arrPeople.next? 'page-item' : 'page-item disabled'}><a className="page-link" href="#" onClick={()=>getNextPeople()}>Next</a></li>
+                            </ul>
+                            ):(
+                            <ul className="pagination">
+                            </ul>
+
+                            )
+                        }
                     </nav>
                 </div>
                 <div className='container  mt-4 '>
@@ -368,13 +377,26 @@ const Home = () => {
 
                     </div>
                 </div>
-
+                
                 <div className='container mt-3'>
                     <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item" disabled={arrPlanets.previous? false : true} ><a class="page-link" href="#" onClick={()=>getPrevPlanets()}>Previous</a></li>
-                            <li class="page-item" disabled={arrPlanets.next? false : true} ><a class="page-link" href="#" onClick={()=>getNextPlanets()}>Next</a></li>
+                {
+                    arrPlanets?
+                    (
+
+                        <ul className="pagination">
+                            <li className={arrPlanets.previous? 'page-item' : 'page-item disabled'} ><a className="page-link" href="#" onClick={()=>getPrevPlanets()}>Previous</a></li>
+                            <li className={arrPlanets.next? 'page-item' : 'page-item disabled'}  ><a className="page-link" href="#" onClick={()=>getNextPlanets()}>Next</a></li>
                         </ul>
+
+                    ):(
+
+                        <ul className="pagination">
+                        </ul>
+
+                    )
+                }
+
                     </nav>
                 </div>
 
