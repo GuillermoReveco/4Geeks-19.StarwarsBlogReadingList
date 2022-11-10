@@ -12,21 +12,23 @@ const Detalle = () => {
         <Layout>
             <div>
                 {
-                    arrPeople.results.map((item, index) => {
+                    arrPeople && arrPeople.results.map((item, index) => {
                         console.log('Detalle - item', item);
                         console.log('Detalle - index', index);
-                        let ind = index + 1;
+                        // let ind = index + 1;
+                        let arr = item.url.split('/');
+                        let ind = arr[arr.length - 2];
+                        console.log('Detalle - ind', ind);
+
                         if (ind == param.id) {
 
-                            let arr = item.url.split('/');
-                            let ind = arr[arr.length - 2];
                             let imgPeople = 'https://starwars-visualguide.com/assets/img/characters/@.jpg';
                             let img = imgPeople.replace('@', `${ind}`);
 
                             return (
-                            <>
-                            <div className="card mb-3" key={ind}>
-                                <div className="row g-0">
+                            <div key={ind}>
+                            <div className="card mb-3" >
+                                <div className="row g-0" >
                                     <div className="col-md-4">
                                         <img src={img} className="img-fluid rounded-start" alt="..." />
                                     </div>
@@ -60,7 +62,7 @@ const Detalle = () => {
                                     </div>
                                 </div>
                             </div>
-                            </>
+                            </div>
                             )
 
                         }

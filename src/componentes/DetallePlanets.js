@@ -12,14 +12,16 @@ const DetallePlanets = () => {
         <Layout>
             <div>
                 {
-                    arrPlanets.results.map((item, index) => {
+                    arrPlanets && arrPlanets.results.map((item, index) => {
                         console.log('DetallePlanets - item', item);
                         console.log('DetallePlanets - index', index);
-                        let ind = index + 1;
+                        // let ind = index + 1;
+                        let arr = item.url.split('/');
+                        let ind = arr[arr.length - 2];
+                        console.log('DetallePlanets - ind', ind);
+
                         if (ind == param.id) {
 
-                            let arr = item.url.split('/');
-                            let ind = arr[arr.length - 2];
                             let imgPlanets = 'https://starwars-visualguide.com/assets/img/planets/@.jpg';
                             let img = imgPlanets.replace('@', `${ind}`);
 
@@ -29,9 +31,9 @@ const DetallePlanets = () => {
 
 
                             return (
-                            <>
-                            <div className="card mb-3" key={ind}>
-                                <div className="row g-0">
+                            <div key={ind}>
+                            <div className="card mb-3" >
+                                <div className="row g-0" >
                                     <div className="col-md-4">
                                         <img src={img} className="img-fluid rounded-start" alt="..." />
                                     </div>
@@ -44,7 +46,7 @@ const DetallePlanets = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div>
+                            <div >
                                 <hr className="linea" />
                                 <div className="text-danger fw-bold">
                                     <div className="row">
@@ -65,7 +67,7 @@ const DetallePlanets = () => {
                                     </div>
                                 </div>
                             </div>
-                            </>
+                            </div>
                             )
 
                         }
